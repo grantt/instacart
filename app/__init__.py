@@ -14,7 +14,7 @@ db = SQLAlchemy(application, session_options={'expire_on_commit': False})
 
 import views
 import models
-from api import example
+from api import applicant
 
-# Me
-app_api.add_resource(example.ExampleResource, '/example')
+# Applicants
+app_api.add_resource(applicant.ApplicantResource, '/applicants/<applicant_id>')

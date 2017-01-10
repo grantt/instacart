@@ -4,6 +4,8 @@ Model of our Applicant
 
 from __future__ import unicode_literals
 
+from marshmallow import fields, Schema
+
 from app import db
 from app.models.base import BaseModel
 import utils
@@ -33,3 +35,16 @@ class Applicant(db.Model, BaseModel):
             'name': '{} {}'.format(self.first_name, self.last_name),
         })
 
+
+class ApplicantSchema(Schema):
+    id = fields.Int()
+    first_name = fields.Str()
+    last_name = fields.Str()
+    region = fields.Str()
+    email = fields.Email()
+    phone = fields.Str()
+    phone_type = fields.Str()
+    source = fields.Str()
+    over_21 = fields.Bool()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
