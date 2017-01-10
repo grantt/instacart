@@ -5,17 +5,24 @@
 // generate classes
 @include gridle_generate_classes();
 
-// manage container width
-#container {
-  max-width : 960px;
-  margin : 0 auto;
+
+* {
+  box-sizing: border-box;
 }
-
 html, body {
-  height: 100%; }
-
+  width: 100%;
+  height: auto;
+}
 body {
-  background: $gallery;
-  color: $birch;
+  margin: 0;
+  background: $gallery url('../images/bg.jpg') no-repeat;
+  background-size: cover;
   font-family: 'Open Sans', sans-serif;
+
+  // manage container width
+  #container {
+    max-width : 960px;
+    margin : 0 auto;
+  }
+
 }
