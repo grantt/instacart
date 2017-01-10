@@ -1,0 +1,54 @@
+{
+  "name": "flask_skeleton",
+  "version": "0.1.0",
+  "description": "Boilerplate for a flask app with React and Reflux in front",
+  "engines": {
+    "npm": "3.3.x",
+    "node": "0.12.7"
+  },
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "bower": "^1.5.2"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "classnames": "^2.2.0",
+    "del": "^1.2.0",
+    "envify": "^3.4.0",
+    "eslint-plugin-react": "^3.9.0",
+    "gridle": "^2.0.48",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-eslint": "^1.1.0",
+    "gulp-if": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.0.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "gulp-webserver": "^0.9.1",
+    "history": "^1.13.0",
+    "lodash": "^3.10.1",
+    "material-design-fonticons": "^1.0.0",
+    "moment": "^2.11.1",
+    "pluralize": "^1.2.1",
+    "react": "^0.14.0",
+    "react-bootstrap": "^0.27.0",
+    "react-dom": "^0.14.0",
+    "react-intl": "^1.2.2",
+    "react-router": "^1.0.0-rc3",
+    "reflux": "^0.3.0",
+    "sass-module-importer": "^1.4.0",
+    "superagent": "^1.6.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": " <grant.toeppen@gmail.com> (Grant Toeppen <grant.toeppen@gmail.com>)",
+  "homepage": "https://github.com/grantt"
+}

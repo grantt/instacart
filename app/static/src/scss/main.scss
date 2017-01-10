@@ -1,0 +1,21 @@
+@import 'settings';
+@import 'colors';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+// generate classes
+@include gridle_generate_classes();
+
+// manage container width
+#container {
+  max-width : 960px;
+  margin : 0 auto;
+}
+
+html, body {
+  height: 100%; }
+
+body {
+  background: $gallery;
+  color: $birch;
+  font-family: 'Open Sans', sans-serif;
+}
