@@ -10,63 +10,63 @@ let ApiHelper = {};
 ApiHelper.get = function(endpoint, params) {
   return new Promise(function (resolve, reject) {
     request
-    .get(endpoint)
-    .query(params)
-    .set('Accept', 'application/json')
-    .end(function (err, res) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.body);
-      }
-    });
+        .get(endpoint)
+        .query(params)
+        .set('Accept', 'application/json')
+        .end(function (err, res) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res.body);
+          }
+        });
   });
 };
 
 ApiHelper.post = function(endpoint, data) {
   return new Promise(function (resolve, reject) {
     request
-    .post(endpoint)
-    .send(data)
-    .set('Accept', 'application/json')
-    .end(function (err, res) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.body);
-      }
-    });
+        .post(endpoint)
+        .send(data)
+        .set('Accept', 'application/json')
+        .end(function (err, res) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res.body);
+          }
+        });
   });
 };
 
-ApiHelper.put = function(endpoint, data) {
+ApiHelper.put = function(endpoint, id, data) {
   return new Promise(function (resolve, reject) {
     request
-    .put(endpoint)
-    .send(data)
-    .set('Accept', 'application/json')
-    .end(function (err, res) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.body);
-      }
-    });
+        .put(endpoint + '/' + id)
+        .send(data)
+        .set('Accept', 'application/json')
+        .end(function (err, res) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res.body);
+          }
+        });
   });
 };
 
 ApiHelper.del = function(endpoint) {
   return new Promise(function (resolve, reject) {
     request
-    .del(endpoint)
-    .set('Accept', 'application/json')
-    .end(function (err, res) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.body);
-      }
-    });
+        .del(endpoint)
+        .set('Accept', 'application/json')
+        .end(function (err, res) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res.body);
+          }
+        });
   });
 };
 

@@ -12,7 +12,7 @@ from app.models.applicant import Applicant, ApplicantSchema
 
 class ApplicantResource(Resource):
     """
-    API resource representing a single applicant. Available for get.
+    API resource representing a single applicant. Available for get and put.
     """
     def get(self, applicant_id):
         """
@@ -22,6 +22,24 @@ class ApplicantResource(Resource):
         schema = ApplicantSchema()
         result = schema.dump(applicant)
         return result.data
+
+    def put(self, applicant_id):
+        """
+        Update an applicant's data
+        """
+        applicant = Applicant.resolve(applicant_id)
+        if not applicant:
+            return '', 404
+
+        schema = ApplicantSchema()
+        result = schema.load(request.json)
+        for key in Applicant.__restricted_fields__.intersection(set(result.data.keys())):
+            setattr(applicant, key, result.data.get(key))
+
+        db.session.commit()
+        schema = ApplicantSchema()
+        result = schema.dump(applicant)
+        return result.data, 201
 
 
 class ApplicantCollection(Resource):
@@ -35,6 +53,8 @@ class ApplicantCollection(Resource):
         """
         schema = ApplicantSchema()
         result = schema.load(request.json)
+        for field in Applicant.__restricted_fields__.intersection(set(result.data.keys())):
+            del result.data[field]
         applicant = Applicant(workflow_state='quiz_started', **result.data)
         db.session.add(applicant)
         db.session.commit()

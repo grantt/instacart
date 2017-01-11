@@ -8,60 +8,70 @@ import Api from '../api.js';
 
 let ApplicantStore = Reflux.createStore({
 
-  listenables: [ApplicantActions],
+    listenables: [ApplicantActions],
 
-  init() {
-    this.applicant = {
-      'first_name': '',
-      'last_name': '',
-      'email': '',
-      'phone': '',
-      'region': '',
-    };
-    _.forOwn(this.applicant, function(value, key){
-      let val = cookie.load(key);
-      if (val) {
-        this.applicant[key] = val;
-      }
-    }.bind(this));
-  },
+    restrictedFields: [
+        'id',
+        'created_at',
+        'updated_at',
+    ],
 
-  getInitialState() {
-    return this.applicant;
-  },
+    init() {
+        this.applicant = {
+            'first_name': '',
+            'last_name': '',
+            'email': '',
+            'phone': '',
+            'region': '',
+        };
+        _.forOwn(this.applicant, function(value, key){
+            let val = cookie.load(key);
+            if (val) {
+                this.applicant[key] = val;
+            }
+        }.bind(this));
+    },
 
-  postApplicant() {
-    Api.postApplicant(this.applicant).then(function(response) {
-        this.applicant = response;
-        this.output();
-    }.bind(this));
-  },
+    sanitizedApplicant() {
+        return _.omit(this.applicant, this.restrictedFields);
+    },
 
-    putApplicant() {
-        Api.putApplicant(this.applicant).then(function(response) {
+    getInitialState() {
+        return this.applicant;
+    },
+
+    postApplicant() {
+        Api.postApplicant(this.sanitizedApplicant()).then(function(response) {
             this.applicant = response;
             this.output();
         }.bind(this));
     },
 
-  onUpdate(payload) {
-    console.log('update applicant');
-    _.extend(this.applicant, payload);
-    _.forOwn(this.applicant, function(value, key) {
-      cookie.save(key, value, {path: '/'});
-    });
-    console.log(this.applicant);
+    putApplicant() {
+        Api.putApplicant(this.sanitizedApplicant(), this.applicant.id).then(function(response) {
+            this.applicant = response;
+            this.output();
+        }.bind(this));
+    },
 
-    this.output();
-  },
+    onUpdate(payload) {
+        console.log('update applicant');
+        _.extend(this.applicant, payload);
+        _.forOwn(this.applicant, function(value, key) {
+            cookie.save(key, value, {path: '/'});
+        });
+        console.log(this.applicant);
 
-  onSave() {
-      this.applicant.id ? this.putApplicant() : this.postApplicant();
-  },
+        this.output();
+    },
 
-  output: function() {
-    this.trigger(this.applicant);
-  },
+    onSave() {
+        this.applicant.id ? this.putApplicant() : this.postApplicant();
+    },
+
+    output: function() {
+        this.trigger(this.applicant);
+    },
 });
 
 export default ApplicantStore;

@@ -16,6 +16,8 @@ class Applicant(db.Model, BaseModel):
     Represents an Instacart shopper applicant
     """
     __tablename__ = 'applicants'
+    # Fields we do not allow a user to modify
+    __restricted_fields__ = {'id', 'created_at', 'updated_at'}
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     first_name = db.Column(db.String(128), nullable=False)

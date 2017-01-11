@@ -15,8 +15,8 @@ Api.postApplicant = function(applicant) {
   return ApiHelper.post(applicantEndpoint, applicant);
 };
 
-Api.putApplicant = function(applicant) {
-  return ApiHelper.put(applicantEndpoint, applicant);
+Api.putApplicant = function(applicant, applicant_id) {
+  return ApiHelper.put(applicantEndpoint, applicant_id, applicant);
 };
 
 export default Api;
