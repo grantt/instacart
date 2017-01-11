@@ -17,4 +17,5 @@ import models
 from api import applicant
 
 # Applicants
+app_api.add_resource(applicant.ApplicantCollection, '/applicants')
 app_api.add_resource(applicant.ApplicantResource, '/applicants/<applicant_id>')

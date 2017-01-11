@@ -15,7 +15,3 @@ class BaseModel(object):
     @classmethod
     def resolve_all(cls,):
         return cls.query.all()
-
-    def to_json(self):
-        dict_repr = {k: getattr(self, k) for k in self.__public_fields__}
-        return json.dumps(dict_repr)
