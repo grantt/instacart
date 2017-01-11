@@ -37,6 +37,7 @@
     "pluralize": "^1.2.1",
     "react": "^0.14.0",
     "react-bootstrap": "^0.27.0",
+    "react-cookie": "^1.0.4",
     "react-dom": "^0.14.0",
     "react-intl": "^1.2.2",
     "react-router": "^1.0.0-rc3",

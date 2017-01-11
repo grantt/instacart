@@ -18,8 +18,9 @@ const App = React.createClass({
   ],
 
   render() {
+    console.log(this.state);
     return (
-         <ApplicantForm/>
+         <ApplicantForm applicant={this.state.applicant}/>
     );
   },
 });

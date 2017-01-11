@@ -4,10 +4,17 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import TextInput from './TextInput.js';
 import SelectInput from './SelectInput.js';
+import ApplicantActions from '../actions/ApplicantActions.js';
 
 const ApplicantForm = React.createClass({
 
     displayName: "ApplicantForm",
+
+    getDefaultProps() {
+        return {
+            applicant: {}
+        };
+    },
 
     getInitialState() {
         return {
@@ -25,8 +32,12 @@ const ApplicantForm = React.createClass({
         });
     },
 
+    onChange(payload) {
+        ApplicantActions.update(payload);
+    },
+
     submit(payload) {
-        console.log(payload);
+        ApplicantActions.save(payload);
     },
 
     render() {
@@ -45,12 +56,14 @@ const ApplicantForm = React.createClass({
                             onValidSubmit={this.submit}
                             onValid={this.enableButton}
                             onInvalid={this.disableButton}
+                            onChange={this.onChange}
                             className="application-form"
                             id="inquiry-draft"
                         >
                             <TextInput
                                 name="first_name"
                                 label="First Name"
+                                value={this.props.applicant.first_name}
                                 validations="isExisty"
                                 validationError="Please enter your first name"
                                 required
@@ -58,6 +71,7 @@ const ApplicantForm = React.createClass({
                             <TextInput
                                 name="last_name"
                                 label="Last Name"
+                                value={this.props.applicant.last_name}
                                 validations="isExisty"
                                 validationError="Please enter your last name"
                                 required
@@ -65,6 +79,7 @@ const ApplicantForm = React.createClass({
                             <TextInput
                                 name="email"
                                 type="email"
+                                value={this.props.applicant.email}
                                 label="Email"
                                 validations="isEmail"
                                 validationError="Please enter a valid email"
@@ -73,6 +88,7 @@ const ApplicantForm = React.createClass({
                             <TextInput
                                 name="phone"
                                 type="phone"
+                                value={this.props.applicant.phone}
                                 label="Phone Number"
                                 validations="isNumeric"
                                 validationError="Please enter a valid phone number"
@@ -81,6 +97,7 @@ const ApplicantForm = React.createClass({
                             <SelectInput
                                 name="region"
                                 label="Region"
+                                value={this.props.applicant.region}
                                 options={this.props.regions}
                                 validations="isExisty"
                                 validationError="Please select a region"

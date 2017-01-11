@@ -2,6 +2,7 @@
 
 import Reflux from 'reflux';
 import _ from 'lodash';
+import cookie from 'react-cookie';
 import ApplicantActions from '../actions/ApplicantActions.js';
 import Api from '../api.js';
 
@@ -10,14 +11,44 @@ let ApplicantStore = Reflux.createStore({
   listenables: [ApplicantActions],
 
   init() {
-    this.applicant = {};
+    this.applicant = {
+      'first_name': '',
+      'last_name': '',
+      'email': '',
+      'phone': '',
+      'region': '',
+    };
+    _.forOwn(this.applicant, function(value, key){
+      let val = cookie.load(key);
+      if (val) {
+        this.applicant[key] = val;
+      }
+    }.bind(this));
   },
 
-  getApplicant() {
-
+  getInitialState() {
+    return this.applicant;
   },
+
   postApplicant() {
+      console.log(this.applicant);
+    Api.postApplicant(this.applicant);
+      this.output();
+  },
 
+  onUpdate(payload) {
+    console.log('update applicant');
+    _.extend(this.applicant, payload);
+    _.forOwn(this.applicant, function(value, key) {
+      cookie.save(key, value, {path: '/'});
+    });
+    console.log(this.applicant);
+
+    this.output();
+  },
+
+  onSave() {
+    this.postApplicant();
   },
 
   output: function() {

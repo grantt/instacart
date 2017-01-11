@@ -3,8 +3,8 @@
 import Reflux from 'reflux';
 
 let ApplicantActions = Reflux.createActions([
-  'get',
-  'post'
+  'update',
+  'save',
 ]);
 
 module.exports = ApplicantActions;
