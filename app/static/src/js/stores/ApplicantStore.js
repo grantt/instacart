@@ -31,10 +31,18 @@ let ApplicantStore = Reflux.createStore({
   },
 
   postApplicant() {
-      console.log(this.applicant);
-    Api.postApplicant(this.applicant);
-      this.output();
+    Api.postApplicant(this.applicant).then(function(response) {
+        this.applicant = response;
+        this.output();
+    }.bind(this));
   },
+
+    putApplicant() {
+        Api.putApplicant(this.applicant).then(function(response) {
+            this.applicant = response;
+            this.output();
+        }.bind(this));
+    },
 
   onUpdate(payload) {
     console.log('update applicant');
@@ -48,7 +56,7 @@ let ApplicantStore = Reflux.createStore({
   },
 
   onSave() {
-    this.postApplicant();
+      this.applicant.id ? this.putApplicant() : this.postApplicant();
   },
 
   output: function() {

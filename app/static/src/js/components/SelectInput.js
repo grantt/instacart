@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import _ from 'lodash';
 import Formsy from 'formsy-react';
 
 const SelectInput = React.createClass({
@@ -10,7 +9,7 @@ const SelectInput = React.createClass({
 
     getDefaultProps() {
         return {
-            options: {},
+            options: [],
         }
     },
 
@@ -28,8 +27,10 @@ const SelectInput = React.createClass({
             <div className={className}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <select onChange={this.changeValue} value={this.getValue()}>
-                    <option value="dallas">Dallas</option>
-                    <option value="sfbayarea">San Francisco Bay Area</option>
+                    <option defaultValue>Select an option</option>
+                    {this.props.options.map(function(val, i) {
+                        return <option key={i} value={val}>{val}</option>;
+                    })}
                 </select>
                 <span>{errorMessage}</span>
             </div>

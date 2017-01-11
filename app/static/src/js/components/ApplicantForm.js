@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Formsy from 'formsy-react';
+import CONSTANTS from '../utils/constants.js';
 import TextInput from './TextInput.js';
 import SelectInput from './SelectInput.js';
 import ApplicantActions from '../actions/ApplicantActions.js';
@@ -98,7 +99,7 @@ const ApplicantForm = React.createClass({
                                 name="region"
                                 label="Region"
                                 value={this.props.applicant.region}
-                                options={this.props.regions}
+                                options={CONSTANTS.region_options}
                                 validations="isExisty"
                                 validationError="Please select a region"
                                 required

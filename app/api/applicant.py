@@ -35,7 +35,7 @@ class ApplicantCollection(Resource):
         """
         schema = ApplicantSchema()
         result = schema.load(request.json)
-        applicant = Applicant(**result.data)
+        applicant = Applicant(workflow_state='quiz_started', **result.data)
         db.session.add(applicant)
         db.session.commit()
         result = schema.dump(applicant)
