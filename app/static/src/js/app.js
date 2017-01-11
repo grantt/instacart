@@ -5,22 +5,21 @@ import ReactDOM from 'react-dom';
 import Reflux from 'reflux';
 import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
 import { createHistory } from 'history';
-import ExampleStore from './stores/ExampleStore.js';
+import ApplicantStore from './stores/ApplicantStore.js';
 import NoMatch from './components/NoMatch.js';
+import ApplicantForm from './components/ApplicantForm.js';
+
 
 let history = createHistory();
 
 const App = React.createClass({
   mixins: [
-    Reflux.connect(ExampleStore, 'example'),
+    Reflux.connect(ApplicantStore, 'applicant'),
   ],
 
   render() {
     return (
-      <div className="gr-12">
-        <p>Hello World</p>
-        <p>Test</p>
-      </div>
+         <ApplicantForm/>
     );
   },
 });

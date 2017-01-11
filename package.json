@@ -18,6 +18,7 @@
     "del": "^1.2.0",
     "envify": "^3.4.0",
     "eslint-plugin-react": "^3.9.0",
+    "formsy-react": "^0.19.0",
     "gridle": "^2.0.48",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
