@@ -7,10 +7,10 @@ import request from 'superagent';
 
 let ApiHelper = {};
 
-ApiHelper.get = function(endpoint, params) {
+ApiHelper.get = function(endpoint, id, params) {
   return new Promise(function (resolve, reject) {
     request
-        .get(endpoint)
+        .get(endpoint + '/' + id)
         .query(params)
         .set('Accept', 'application/json')
         .end(function (err, res) {

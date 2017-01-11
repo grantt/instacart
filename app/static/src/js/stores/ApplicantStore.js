@@ -17,19 +17,26 @@ let ApplicantStore = Reflux.createStore({
     ],
 
     init() {
-        this.applicant = {
-            'first_name': '',
-            'last_name': '',
-            'email': '',
-            'phone': '',
-            'region': '',
-        };
-        _.forOwn(this.applicant, function(value, key){
-            let val = cookie.load(key);
-            if (val) {
-                this.applicant[key] = val;
-            }
-        }.bind(this));
+        if (cookie.load('id')) {
+            this.applicant = {
+                'id': cookie.load('id')
+            };
+            this.getApplicant();
+        } else {
+            this.applicant = {
+                'first_name': '',
+                'last_name': '',
+                'email': '',
+                'phone': '',
+                'region': '',
+            };
+            _.forOwn(this.applicant, function (value, key) {
+                let val = cookie.load(key);
+                if (val) {
+                    this.applicant[key] = val;
+                }
+            }.bind(this));
+        }
     },
 
     sanitizedApplicant() {
@@ -38,6 +45,13 @@ let ApplicantStore = Reflux.createStore({
 
     getInitialState() {
         return this.applicant;
+    },
+
+    getApplicant() {
+        Api.getApplicant(this.applicant.id).then(function(response) {
+            this.applicant = response;
+            this.output();
+        }.bind(this));
     },
 
     postApplicant() {

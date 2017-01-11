@@ -7,8 +7,8 @@ let applicantEndpoint = '/applicants';
 let Api = {};
 
 /* Applicant endpoint */
-Api.getApplicant = function() {
-  return ApiHelper.get(applicantEndpoint);
+Api.getApplicant = function(applicant_id) {
+  return ApiHelper.get(applicantEndpoint, applicant_id);
 };
 
 Api.postApplicant = function(applicant) {

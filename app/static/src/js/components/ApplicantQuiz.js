@@ -36,8 +36,8 @@ const ApplicantQuiz = React.createClass({
         ApplicantActions.update(payload);
     },
 
-    submit(payload) {
-        ApplicantActions.save(payload);
+    submit() {
+        ApplicantActions.save();
     },
 
     render() {
