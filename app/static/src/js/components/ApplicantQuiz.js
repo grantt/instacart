@@ -44,13 +44,10 @@ const ApplicantQuiz = React.createClass({
         return (
             <div>
                 <div className="header gr-12 row">
-                    <h1>A couple of questions for you</h1>
+                    <h1 className="center-text">A couple of questions for you</h1>
                 </div>
                 <div className="content gr-12 row row-align-center row-align-middle">
-                    <div className="description gr-6 gr-12@mobile">
-                        <p>This will be explanatory text</p>
-                    </div>
-                    <div className="form gr-6 gr-12@mobile">
+                    <div className="gr-centered gr-6 gr-12@mobile">
                         <Formsy.Form
                             onValidSubmit={this.submit}
                             onValid={this.enableButton}
@@ -73,7 +70,13 @@ const ApplicantQuiz = React.createClass({
                                 value={this.props.applicant.source}
                                 options={CONSTANTS.source_options}
                             />
-                            <button onClick={this.submit} disabled={!this.state.canSubmit}>Continue <i className="mdfi_navigation_arrow_forward"></i></button>
+                            <button
+                                className="gr-centered"
+                                onClick={this.submit}
+                                disabled={!this.state.canSubmit}
+                            >
+                                Continue <i className="mdfi_navigation_arrow_forward"></i>
+                            </button>
                         </Formsy.Form>
                     </div>
                 </div>

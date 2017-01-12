@@ -45,24 +45,24 @@ const ApplicantForm = React.createClass({
         return (
             <div>
                 <div className="header gr-12 row">
-                    <h1>Earn money as an Instacart shopper today!</h1>
+                    <h1 className="center-text">Earn money as an Instacart shopper today!</h1>
                 </div>
                 <div className="content gr-12 row row-align-center row-align-middle">
                     <div className="description gr-6 gr-12@mobile">
-                        <h2><i className="mdfi_image_timer"></i>Takes less than 5 minutes</h2>
+                        <h2 className="left-text"><i className="mdfi_image_timer"></i>Takes less than 5 minutes</h2>
                         <ul>
                             <li>Just enter in your name, email, and phone number</li>
                             <li>Answer a few quick questions</li>
                             <li>Its that easy!</li>
                         </ul>
-                        <h2><i className=" mdfi_social_mood"></i>Work with freedom and flexibility</h2>
+                        <h2 className="left-text"><i className=" mdfi_social_mood"></i>Work with freedom and flexibility</h2>
                         <ul>
                             <li>Schedule work around your life</li>
                             <li>Make money independently</li>
                             <li>Help people and have fun shopping</li>
                         </ul>
                     </div>
-                    <div className="form gr-6 gr-12@mobile">
+                    <div className="gr-6 gr-12@mobile">
                         <Formsy.Form
                             onValidSubmit={this.submit}
                             onValid={this.enableButton}

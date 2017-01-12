@@ -42,7 +42,27 @@ body {
     @include transform(translateY(50%));
     h1, h2, h3 {
       font-weight: 300;
-      text-align: center;
+      &.center-text {
+        text-align: center;
+      }
+      &.left-text {
+        text-align: left;
+      }
+      &.right-text {
+        text-align: right;
+      }
+    }
+    a {
+      color: $instacart-green;
+      text-decoration: none;
+      &:hover {
+        color: $instacart-green-shaded;
+        border-bottom: 1px dotted $instacart-green-shaded;
+      }
+      &:visited {
+        color: $dark-grey;
+        border-bottom: 1px dotted $dark-grey;
+      }
     }
     .logo {
       display: block;
@@ -68,7 +88,6 @@ body {
         }
         h2, i {
           color: $med-grey;
-          text-align: left;
           display: inline-flex;
           vertical-align: middle;
           font-size: 24px;
