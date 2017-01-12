@@ -28,11 +28,11 @@ const ApplicantConsent = React.createClass({
                     <h1 className="center-text">One last step!</h1>
                 </div>
                 <div className="content gr-12 row row-align-center row-align-middle">
-                    <div className="description gr-8 gr-12@mobile">
+                    <div className="description gr-12 gr-12@mobile">
                         <h2 className="center-text gr-centered"><i className=" mdfi_social_person"></i>A simple background check</h2>
                         <p>To ensure the safety of our customers and to make sure our team is the best around, we conduct a simple background check on all our shoppers. By clicking "I agree", you consent to us conducting a background check through a third-party. </p>
                     </div>
-                    <div className="gr-4 gr-12@mobile">
+                    <div className="gr-12 gr-12@mobile">
                         <button
                             className="gr-centered"
                             onClick={this.onClick}

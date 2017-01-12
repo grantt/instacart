@@ -55,13 +55,17 @@ body {
     a {
       color: $instacart-green;
       text-decoration: none;
+      border-bottom: 1px dotted $instacart-green-shaded;
       &:hover {
         color: $instacart-green-shaded;
-        border-bottom: 1px dotted $instacart-green-shaded;
+        border-bottom: 1px solid $instacart-green-shaded;
       }
       &:visited {
         color: $dark-grey;
         border-bottom: 1px dotted $dark-grey;
+        &:hover {
+          border-bottom: 1px solid $dark-grey;
+        }
       }
     }
     .logo {
@@ -78,11 +82,14 @@ body {
       background-color: $instacart-green;
       color: $white;
       @include shaded-text($instacart-green-shaded);
+      @include rounded-top();
     }
     .content {
       padding: 20px 0px;
       background-color: $gallery;
+      @include rounded-bottom();
       .description {
+        padding: 0px 20px;
         h2 {
           margin: 20px 0px 0px 0px;
         }
@@ -122,6 +129,11 @@ body {
         {
           color: $alto;
         }
+      }
+      label {
+        padding: 0px 0px 0px 10px;
+        font-size: 1.2em;
+        line-height: 2em;
       }
       span.input_error {
         display: block;
