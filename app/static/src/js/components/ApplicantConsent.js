@@ -18,9 +18,7 @@ const ApplicantConsent = React.createClass({
 
     onClick(e) {
         e.preventDefault();
-        let payload = _.extend({}, this.props.applicant);
-        payload.workflow_state = 'applied';
-        ApplicantActions.update(payload);
+        ApplicantActions.apply();
     },
 
     render() {

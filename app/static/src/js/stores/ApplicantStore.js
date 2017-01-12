@@ -69,18 +69,36 @@ let ApplicantStore = Reflux.createStore({
     },
 
     onUpdate(payload) {
-        console.log('update applicant');
         _.extend(this.applicant, payload);
         _.forOwn(this.applicant, function(value, key) {
             cookie.save(key, value, {path: '/'});
         });
-        console.log(this.applicant);
 
         this.output();
     },
 
     onSave() {
         this.applicant.id ? this.putApplicant() : this.postApplicant();
+    },
+
+    changeState(newState){
+        return new Promise(function(resolve) {
+            resolve(ApplicantActions.update({workflow_state: newState}));
+        }).then(
+            ApplicantActions.save()
+        );
+    },
+
+    onStartQuiz(){
+        this.changeState('quiz_started');
+    },
+
+    onCompleteQuiz(){
+        this.changeState('quiz_completed');
+    },
+
+    onApply(){
+        this.changeState('applied');
     },
 
     output: function() {

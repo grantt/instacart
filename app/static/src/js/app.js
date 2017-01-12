@@ -51,7 +51,7 @@ const App = React.createClass({
       case 'quiz_started':
         content = this.renderApplicantQuiz();
         break;
-      case 'quiz_complete':
+      case 'quiz_completed':
         content = this.renderApplicantConsent();
         break;
       case 'applied':

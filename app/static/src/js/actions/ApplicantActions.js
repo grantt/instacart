@@ -4,6 +4,9 @@ import Reflux from 'reflux';
 
 let ApplicantActions = Reflux.createActions([
   'update',
+  'startQuiz',
+  'completeQuiz',
+  'apply',
   'save',
 ]);
 

@@ -33,7 +33,7 @@ class ApplicantResource(Resource):
 
         schema = ApplicantSchema()
         result = schema.load(request.json)
-        for key in Applicant.__restricted_fields__.intersection(set(result.data.keys())):
+        for key in set(result.data.keys()).difference(Applicant.__restricted_fields__):
             setattr(applicant, key, result.data.get(key))
 
         db.session.commit()
@@ -55,7 +55,7 @@ class ApplicantCollection(Resource):
         result = schema.load(request.json)
         for field in Applicant.__restricted_fields__.intersection(set(result.data.keys())):
             del result.data[field]
-        applicant = Applicant(workflow_state='quiz_started', **result.data)
+        applicant = Applicant(**result.data)
         db.session.add(applicant)
         db.session.commit()
         result = schema.dump(applicant)

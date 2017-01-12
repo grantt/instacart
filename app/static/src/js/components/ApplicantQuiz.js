@@ -37,7 +37,7 @@ const ApplicantQuiz = React.createClass({
     },
 
     submit() {
-        ApplicantActions.save();
+        ApplicantActions.completeQuiz();
     },
 
     render() {
