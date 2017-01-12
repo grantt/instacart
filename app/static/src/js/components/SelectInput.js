@@ -9,6 +9,7 @@ const SelectInput = React.createClass({
 
     getDefaultProps() {
         return {
+            placeholder: 'Select An Option',
             options: [],
         }
     },
@@ -25,14 +26,13 @@ const SelectInput = React.createClass({
 
         return (
             <div className={className}>
-                <label htmlFor={this.props.name}>{this.props.label}</label>
                 <select onChange={this.changeValue} value={this.getValue()}>
-                    <option defaultValue>Select an option</option>
+                    <option defaultValue>{this.props.placeholder}</option>
                     {this.props.options.map(function(val, i) {
                         return <option key={i} value={val}>{val}</option>;
                     })}
                 </select>
-                <span>{errorMessage}</span>
+                <span className="input_error">{errorMessage}</span>
             </div>
         );
     }

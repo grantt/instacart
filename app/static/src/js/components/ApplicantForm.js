@@ -63,16 +63,16 @@ const ApplicantForm = React.createClass({
                         >
                             <TextInput
                                 name="first_name"
-                                label="First Name"
                                 value={this.props.applicant.first_name}
+                                placeholder="First Name"
                                 validations="isExisty"
                                 validationError="Please enter your first name"
                                 required
                             />
                             <TextInput
                                 name="last_name"
-                                label="Last Name"
                                 value={this.props.applicant.last_name}
+                                placeholder="Last Name"
                                 validations="isExisty"
                                 validationError="Please enter your last name"
                                 required
@@ -81,7 +81,7 @@ const ApplicantForm = React.createClass({
                                 name="email"
                                 type="email"
                                 value={this.props.applicant.email}
-                                label="Email"
+                                placeholder="Email"
                                 validations="isEmail"
                                 validationError="Please enter a valid email"
                                 required
@@ -90,8 +90,10 @@ const ApplicantForm = React.createClass({
                                 name="phone"
                                 type="phone"
                                 value={this.props.applicant.phone}
-                                label="Phone Number"
-                                validations="isNumeric"
+                                placeholder="Phone Number"
+                                validations={{
+                                    matchRegexp: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+                                }}
                                 validationError="Please enter a valid phone number"
                                 required
                             />
@@ -100,11 +102,12 @@ const ApplicantForm = React.createClass({
                                 label="Region"
                                 value={this.props.applicant.region}
                                 options={CONSTANTS.region_options}
+                                placeholder="Select your region"
                                 validations="isExisty"
                                 validationError="Please select a region"
                                 required
                             />
-                            <input type="submit" value="Let's Do This!" disabled={!this.state.canSubmit}/>
+                            <button onClick={this.submit} disabled={!this.state.canSubmit}>Let's Do This! <i className="mdfi_navigation_arrow_forward"></i></button>
                         </Formsy.Form>
                     </div>
                 </div>

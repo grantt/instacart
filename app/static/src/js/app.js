@@ -62,8 +62,11 @@ const App = React.createClass({
     }
 
     return (
-        <div className="application gr-12">
-          {content}
+        <div>
+          <div className="logo gr-12"></div>
+          <div className="application gr-12">
+            {content}
+          </div>
         </div>
     );
   },

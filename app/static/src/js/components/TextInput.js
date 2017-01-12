@@ -9,7 +9,8 @@ const TextInput = React.createClass({
 
     getDefaultProps() {
         return {
-            type:'text'
+            type:'text',
+            placeholder: 'TextInput'
         }
     },
 
@@ -24,9 +25,13 @@ const TextInput = React.createClass({
 
         return (
             <div className={className}>
-                <label htmlFor={this.props.name}>{this.props.label}</label>
-                <input type={this.props.type} onChange={this.changeValue} value={this.getValue()}/>
-                <span>{errorMessage}</span>
+                <input
+                    type={this.props.type}
+                    placeholder={this.props.placeholder}
+                    onChange={this.changeValue}
+                    value={this.getValue()}
+                />
+                <span className="input_error">{errorMessage}</span>
             </div>
         );
     }

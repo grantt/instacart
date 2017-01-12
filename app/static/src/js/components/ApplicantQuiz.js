@@ -59,21 +59,21 @@ const ApplicantQuiz = React.createClass({
                             className="application-form"
                         >
                             <SelectInput
-                                name="source"
-                                label="How did you hear about us?"
-                                value={this.props.applicant.source}
-                                options={CONSTANTS.source_options}
-                            />
-                            <SelectInput
                                 name="over_21"
-                                label="Are you 21 or older?"
+                                placeholder="Are you 21 or older?"
                                 value={this.props.applicant.over_21}
                                 options={CONSTANTS.over_21_options}
                                 validations="isExisty"
                                 validationError="Please select an option"
                                 required
                             />
-                            <input type="submit" value="Continue" disabled={!this.state.canSubmit}/>
+                            <SelectInput
+                                name="source"
+                                placeholder="How did you hear about us?"
+                                value={this.props.applicant.source}
+                                options={CONSTANTS.source_options}
+                            />
+                            <button onClick={this.submit} disabled={!this.state.canSubmit}>Continue <i className="mdfi_navigation_arrow_forward"></i></button>
                         </Formsy.Form>
                     </div>
                 </div>

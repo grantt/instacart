@@ -1,0 +1,93 @@
+@import 'colors';
+
+// Animation helpers
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+// Transform helpers
+
+// generic transform
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// Style helpers
+@mixin rounded($radius: 4px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin button($color, $textcolor) {
+  background: $color;
+  color: $textcolor;
+  border-radius: 2px;
+  padding: 0 20px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  &:disabled {
+    cursor: default;
+    &:hover { box-shadow: none; }
+  }
+  &:hover {
+    background:darken($color, 4%);
+  }
+  &:active {
+    background:darken($color,25%);
+  }
+}

@@ -32,7 +32,7 @@ const ApplicantConsent = React.createClass({
                         <p>To ensure the safety of our customers and to make sure our team is the best around, we conduct a simple background check on all our shoppers. By clicking "I agree", you consent to us conducting a background check through a third-party. </p>
                     </div>
                     <div className="form gr-6 gr-12@mobile">
-                        <button onClick={this.onClick}>I agree</button>
+                        <button onClick={this.onClick}>I agree <i className="mdfi_action_done"></i></button>
                     </div>
                 </div>
             </div>
