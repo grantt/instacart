@@ -43,12 +43,12 @@ const ApplicantForm = React.createClass({
 
     render() {
         return (
-            <div className="application gr-12">
-                <div className="header gr-12">
+            <div>
+                <div className="header gr-12 row">
                     <h1>Earn money with Instacart today!</h1>
                     <h2>Sign up to be a shopper</h2>
                 </div>
-                <div className="content gr-12">
+                <div className="content gr-12 row row-align-center row-align-middle">
                     <div className="description gr-6 gr-12@mobile">
                         <p>This will be explanatory text</p>
                     </div>
@@ -62,6 +62,9 @@ const ApplicantForm = React.createClass({
                             id="inquiry-draft"
                         >
                             <TextInput
+                                desktopWidth="6"
+                                tabletWidth="6"
+                                mobileWidth="12"
                                 name="first_name"
                                 value={this.props.applicant.first_name}
                                 placeholder="First Name"
@@ -70,6 +73,9 @@ const ApplicantForm = React.createClass({
                                 required
                             />
                             <TextInput
+                                desktopWidth="6"
+                                tabletWidth="6"
+                                mobileWidth="12"
                                 name="last_name"
                                 value={this.props.applicant.last_name}
                                 placeholder="Last Name"
@@ -78,6 +84,9 @@ const ApplicantForm = React.createClass({
                                 required
                             />
                             <TextInput
+                                desktopWidth="12"
+                                tabletWidth="12"
+                                mobileWidth="12"
                                 name="email"
                                 type="email"
                                 value={this.props.applicant.email}
@@ -87,6 +96,9 @@ const ApplicantForm = React.createClass({
                                 required
                             />
                             <TextInput
+                                desktopWidth="12"
+                                tabletWidth="12"
+                                mobileWidth="12"
                                 name="phone"
                                 type="phone"
                                 value={this.props.applicant.phone}
@@ -98,6 +110,9 @@ const ApplicantForm = React.createClass({
                                 required
                             />
                             <SelectInput
+                                desktopWidth="12"
+                                tabletWidth="12"
+                                mobileWidth="12"
                                 name="region"
                                 label="Region"
                                 value={this.props.applicant.region}
@@ -107,7 +122,13 @@ const ApplicantForm = React.createClass({
                                 validationError="Please select a region"
                                 required
                             />
-                            <button onClick={this.submit} disabled={!this.state.canSubmit}>Let's Do This! <i className="mdfi_navigation_arrow_forward"></i></button>
+                            <button
+                                className="gr-centered gr-6 gr-12@mobile gr-12@tablet"
+                                onClick={this.submit}
+                                disabled={!this.state.canSubmit}
+                            >
+                                Let's Do This! <i className="mdfi_navigation_arrow_forward"></i>
+                            </button>
                         </Formsy.Form>
                     </div>
                 </div>

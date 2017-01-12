@@ -19,15 +19,19 @@
 * {
   box-sizing: border-box;
 }
+
+@include placeholder-color($alto);
+
 html, body {
   width: 100%;
   height: auto;
 }
+
 body {
   margin: 0;
   background: $gallery url('../images/bg_fade.jpg') no-repeat;
   background-size: cover;
-  font-family: 'Open Sans', sans-serif;
+  @include font();
 
   // manage container width
   #container {
@@ -47,15 +51,42 @@ body {
       background-size: contain;
       @include animation('wiggle 0.15s 0.5s 3');
     }
-    .application {
+    .header {
+      background: url('../images/pattern.png') repeat;
+      background-size: 208px 208px;
+      background-color: $instacart-green;
+      color: $white;
+      @include shaded-text($instacart-green-shaded);
+    }
+    .content {
+      padding: 20px 0px;
       background-color: $gallery;
-      @include rounded();
+    }
+    button {
+      @include button($instacart-green, $white);
+      span, i {
+        display: inline-flex;
+        vertical-align: middle;
+        line-height: 14px;
+      }
+      i {
+        padding-left: 10px;
+      }
     }
     form {
-      button {
-        @include button($instacart-green, $white);
+      input, select {
+        @include input();
+      }
+      select {
+        option:first-child
+        {
+          color: $alto;
+        }
       }
       span.input_error {
+        display: block;
+        height: 20px;
+        font-size: 0.9em;
         color: $error;
       }
     }

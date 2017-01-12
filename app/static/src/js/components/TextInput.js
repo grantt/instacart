@@ -14,24 +14,30 @@ const TextInput = React.createClass({
         }
     },
 
+    getClassName() {
+        let status = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
+        let desk = this.props.desktopWidth ? "gr-" + this.props.desktopWidth : "";
+        let tablet = this.props.tabletWidth ? "gr-" + this.props.tabletWidth + "@tablet" : "";
+        let mobile = this.props.mobileWidth ? "gr-" + this.props.mobileWidth + "@mobile" : "";
+        return status + " " + desk + " " + tablet + " " + mobile;
+    },
+
     changeValue(e) {
         this.setValue(e.currentTarget.value);
     },
 
     render() {
-        const className = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
-
-        const errorMessage = this.getErrorMessage();
+        let errorMessage = this.getErrorMessage();
 
         return (
-            <div className={className}>
+            <div className={this.getClassName()}>
+                <span className="input_error">{errorMessage}</span>
                 <input
                     type={this.props.type}
                     placeholder={this.props.placeholder}
                     onChange={this.changeValue}
                     value={this.getValue()}
                 />
-                <span className="input_error">{errorMessage}</span>
             </div>
         );
     }

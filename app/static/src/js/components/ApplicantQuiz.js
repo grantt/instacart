@@ -43,10 +43,10 @@ const ApplicantQuiz = React.createClass({
     render() {
         return (
             <div>
-                <div className="header gr-12">
+                <div className="header gr-12 row">
                     <h1>A couple of questions for you</h1>
                 </div>
-                <div className="content gr-12">
+                <div className="content gr-12 row row-align-center row-align-middle">
                     <div className="description gr-6 gr-12@mobile">
                         <p>This will be explanatory text</p>
                     </div>
