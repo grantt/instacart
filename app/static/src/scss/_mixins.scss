@@ -121,14 +121,15 @@
   margin:0 0 20px;
   width: 100%;
   @include rounded(2px);
-  @include box-shadow(0px, 0px, 2px, rgba(0, 0, 0, 0.2), true);
+  @include box-shadow(0px, 0px, 1px, rgba(0, 0, 0, 0.2), true);
 }
 
 // Typographic helpers
 @mixin font() {
-  font-family: 'Open Sans', sans-serif;
+  color: $dark-grey;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @mixin shaded-text($color) {
-  text-shadow: 3px 3px 1px $color;
+  text-shadow: 1px 1px 2px $color;
 }
