@@ -14,8 +14,11 @@ db = SQLAlchemy(application, session_options={'expire_on_commit': False})
 
 import views
 import models
-from api import applicant
+from api import applicant, funnels
 
 # Applicants
 app_api.add_resource(applicant.ApplicantCollection, '/applicants')
 app_api.add_resource(applicant.ApplicantResource, '/applicants/<applicant_id>')
+
+# Funnels
+app_api.add_resource(funnels.FunnelsResource, '/funnels')

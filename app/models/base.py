@@ -13,5 +13,5 @@ class BaseModel(object):
         return cls.query.filter_by(id=id_).first()
 
     @classmethod
-    def resolve_all(cls,):
+    def resolve_all(cls):
         return cls.query.all()
