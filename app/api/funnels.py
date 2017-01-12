@@ -51,6 +51,12 @@ class FunnelsResource(Resource):
             week_start = created_at - timedelta(days=created_at.weekday())
             week_end = created_at + timedelta(days=6 - created_at.weekday())
 
+            if week_start < start_date:
+                week_start = start_date
+
+            if week_end > end_date:
+                week_end = end_date
+
             bucket = '{}-{}'.format(
                 week_start.strftime('%Y-%m-%d'),
                 week_end.strftime('%Y-%m-%d')
