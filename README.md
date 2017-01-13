@@ -16,6 +16,9 @@ Styling of the application is done via [SASS](http://sass-lang.com/) with buildi
 ## Install and Run the Application ##
 ```sh
 git clone git@github.com:grantt/instacart.git
+cd instacart
+mkdir db
+cp {path/to/development.sqlite} ./db/development.sqlite
 pip install virtualenv
 mkvirtualenv instacart
 pip install -r requirements.txt
@@ -30,13 +33,17 @@ Navigate to localhost:5000.
 Resources
 ___
 __Applicant__
+
 Endpoint
+
 `/applicants/{id}`
 
 Available Methods
+
 `GET`, `POST`, `PUT`
 
 Attributes
+
 | Attribute      | Type     | Description                                                               |
 | -------------- | -------- | ------------------------------------------------------------------------- |
 | id             | int      | Unique identifier of the applicant                                        |
@@ -54,6 +61,7 @@ Attributes
 | updated_at     | datetime | The timestamp the applicant last was updated in the database              |
 
 Example Response
+
 ```
 {
   "created_at": "2014-10-23T07:17:35+00:00",
@@ -73,19 +81,24 @@ Example Response
 ```
 
 __Funnel__
+
 Endpoint
+
 `/funnels`
 
 Available Methods
+
 `GET`
 
 Query Parameters
+
 | Parameter  | Type   | Description                                                   |
 |------------|--------|---------------------------------------------------------------|
 | start_date | string | Start date of the applicant funnel analysis (ex.`2014-09-01`) |
 | end_date   | string | End date of the applicant funnel analysis (ex.`2014-09-30`)   |
 
 Example Response
+
 ```
 {
   "2014-09-01-2014-09-07": {
